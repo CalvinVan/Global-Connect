@@ -10,6 +10,9 @@ Blobal Connect's purpose is to serve as a job-search platform catered for intern
 5. After it launches, there should be a link in the terminal that looks something like "http://localhost:5174/Global-Connect/"
 6. YOu can then ctr+left click the link to open it or copy and paste it on your browser to launch
 
+## Github Pages Accessible Link
+https://calvinvan.github.io/Global-Connect/
+
 ## How to use platform
 WIP
 
