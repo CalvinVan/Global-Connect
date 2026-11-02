@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar"
 import Header from "../components/Header"
 import { FaUserCircle } from "react-icons/fa"
 import { BsChatText } from "react-icons/bs"
+import { Link } from "react-router"
 
 const connections = [
     { id: 1, name: 'Chris Hansen', title: 'Hamburger Cheeseburger Bigmac Whopper' },
@@ -30,9 +31,12 @@ function ConnectionsPage() {
                                 <p className="connection-name">{connection.name}</p>
                                 <p className="connection-title">{connection.title}</p>
                             </div>
+                            <Link to="/messages">
                             <button className="message-button">
                                 <BsChatText size={26} />
+                                
                             </button>
+                            </Link>
                         </li>
                         ))} 
                 </ul>
