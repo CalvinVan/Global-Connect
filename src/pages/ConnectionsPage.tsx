@@ -1,6 +1,7 @@
 import "./ConnectionsPage.css"
 import Layout from "../components/Layout"
-
+import Sidebar from "../components/Sidebar"
+import Header from "../components/Header"
 import { FaUserCircle } from "react-icons/fa"
 import { BsChatText } from "react-icons/bs"
 import { Link } from "react-router"
