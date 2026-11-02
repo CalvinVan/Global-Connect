@@ -1,17 +1,11 @@
 
-import './LandingPage.css'
-import Sidebar from "./components/Sidebar"
-import Header from './components/Header'
+import Layout from "./components/Layout"
 
 function LandingPage() {
     return(
-    <div className="layout">
-        <Sidebar name="Avatar" title="Student at University of Texas at Dallas" />
-        <div className="main">
-            <Header />
-            <main className="connections-list">ConnectionsList</main>
-        </div>
-    </div>
+    <Layout>
+        Replace with dashboard content component here later
+    </Layout>
     )
 }
 
