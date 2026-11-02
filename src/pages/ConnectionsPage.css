@@ -1,0 +1,42 @@
+/* styling for other connections page stuff since it may be later moved to a layout.css file if we make the layout a component*/
+.page-title {
+    margin:0;
+    padding: 16px 24px;
+    font-size: 1.25rem;
+    border-bottom: 1px solid #eae5ee
+}
+
+.connections-display {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.connection-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eae5ee;
+}
+
+.connection-info {
+    flex: 1;
+}
+
+.connection-name {
+    margin: 0;
+    font-weight: bold;
+}
+
+.connection-title {
+    margin: 2px 0 0;
+    font-size: 0.75rem;
+    color: #777777
+}
+
+.message-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}

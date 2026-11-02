@@ -1,0 +1,109 @@
+/* main page related styling */
+.layout{ 
+    display: grid; 
+    grid-template-columns: 240px 1fr; 
+    height: 100vh; 
+}
+
+
+/* dashbaord content related styling */
+.main{  
+    display: flex; 
+    flex-direction: column; 
+}
+
+.content { 
+    flex: 1; 
+    overflow-y: auto; 
+}
+
+
+/* sidebar related styling */
+.sidebar { 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: #3daf6c; 
+    color: white; 
+}
+
+.profile{
+    padding: 56px 40px 0;
+}
+
+.profile h2 {
+        margin: 24px 0 8px;
+    }
+
+.profile p {
+    margin:0;
+}
+
+.sidebar-nav {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 4px 4px;
+}
+
+.sidebar-nav button{
+    width: 100%;
+    padding:8px;
+    border: none;
+    border-top: 2px solid white;
+    background: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+/* header related styling */
+.header { 
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 56px;
+    padding: 0 12px;
+    background: #d9d9d9;
+}
+
+.search-bar{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 260px;
+    padding: 8px 12px;
+    border-radius: 18px;
+    background: #eae5ee;
+}
+
+.search-bar input{
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.home-link,
+.connections-link{
+    display: flex;
+    align-items: center;
+    color: #868585;
+    text-decoration: none;
+}
+
+.connections-link{
+    margin-left: auto;
+    gap: 10px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: #3cfd6c;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.connections-link:hover{
+    background: #a5f3a5
+}
