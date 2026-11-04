@@ -7,7 +7,7 @@ function Header() {
         <header className="header">Global-Connect
             <div className="search-bar">
                 <input type="text" placeholder='Search recruiters and jobs'/>
-                <Link to="/" className="home-link">
+                <Link to="/search" className="home-link">
                     <MdSearch size={20} />
                 </Link>
             </div>
