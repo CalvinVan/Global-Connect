@@ -15,13 +15,8 @@ const connections = [
 
 function ConnectionsPage() {
     return (
-    <div className="layout">
-        <Sidebar name="Avatar" title="Student at University of Texas at Dallas" />
-        <div className="main">
-            <Header />
-            <main className="content">
-                <h1 className="page-title">Connections</h1>
-                
+            <Layout>
+                <h1 className="page-title">Connections</h1>   
                 {/* Mapping logic to map out all the names from the connections list about */}
                 <ul className="connections-display">
                     {connections.map((connection) =>(
@@ -40,9 +35,8 @@ function ConnectionsPage() {
                         </li>
                         ))} 
                 </ul>
-            </main>
-        </div>
-    </div>
+            </Layout>
+
     )
 }
 

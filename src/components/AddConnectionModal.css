@@ -1,0 +1,142 @@
+.connection-modal {
+    width: min(640px, calc(100% - 32px));
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: #fff;
+}
+
+.connection-modal::backdrop {
+    background: rgb(217 217 217 / 75%);
+}
+
+.connection-modal-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 36px 40px 32px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    padding: 4px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: #868585;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    background: #eeeeee;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.modal-avatar {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    color: #cfcdcd;
+}
+
+.modal-message {
+    min-height: 220px;
+    padding: 16px 18px;
+    border: none;
+    border-radius: 20px;
+    background: #d9d9d9;
+    font: inherit;
+    font-size: 1.125rem;
+    resize: vertical;
+}
+
+.modal-message::placeholder {
+    color: #000;
+    font-weight: 500;
+}
+
+.modal-message:focus {
+    outline: 2px solid #1fae5b;
+}
+
+.modal-action {
+    align-self: flex-end;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 999px;
+    background: #1fae5b;
+    color: #fff;
+    font: inherit;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-action:hover {
+    background: #1a9a50;
+}
+
+.modal-action:disabled {
+    background: #a6d8b9;
+    cursor: default;
+}
+
+.modal-success {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 1.125rem;
+}
+
+.modal-success p {
+    margin: 0;
+}
+
+.modal-success-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1fae5b;
+}
+
+.modal-success .modal-action {
+    margin-top: 20px;
+}
+
+@media (max-width: 760px) {
+    .connection-modal-body {
+        padding: 28px 20px 20px;
+    }
+
+    .modal-header {
+        gap: 16px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-avatar {
+        width: 56px;
+        height: 56px;
+    }
+
+    .modal-action {
+        font-size: 1.25rem;
+        padding: 10px 28px;
+    }
+}
