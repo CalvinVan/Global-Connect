@@ -1,8 +1,9 @@
 import "./ConnectionsPage.css"
-import Layout from "../components/Layout"
+
 import { FaUserCircle } from "react-icons/fa"
 import { BsChatText } from "react-icons/bs"
 import { Link } from "react-router"
+import Layout from "../components/Layout"
 
 const connections = [
     { id: 1, name: 'Chris Hansen', title: 'Hamburger Cheeseburger Bigmac Whopper' },
