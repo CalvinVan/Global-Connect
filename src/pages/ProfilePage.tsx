@@ -2,6 +2,9 @@ import { useState, type ChangeEvent, type FormEvent } from "react"
 import { FaUserCircle } from "react-icons/fa"
 import Layout, { useProfile } from "../components/Layout"
 
+const MAX_NAME_LENGTH = 60
+const MAX_STATUS_LENGTH = 120
+
 function ProfileForm() {
     const { profile, saveProfile } = useProfile()
     const [name, setName] = useState(profile.name)
@@ -42,6 +45,10 @@ function ProfileForm() {
             setMessage("Display name and status are required.")
             return
         }
+        if (updatedProfile.name.length > MAX_NAME_LENGTH || updatedProfile.title.length > MAX_STATUS_LENGTH) {
+            setMessage(`Display name must be ${MAX_NAME_LENGTH} characters or fewer and status must be ${MAX_STATUS_LENGTH} characters or fewer.`)
+            return
+        }
 
         try {
             saveProfile(updatedProfile)
@@ -72,9 +79,10 @@ function ProfileForm() {
                         type="text"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
-                        maxLength={60}
+                        maxLength={MAX_NAME_LENGTH}
                         required
                     />
+                    <span className="profile-field-hint">{name.length}/{MAX_NAME_LENGTH} characters</span>
                 </label>
                 <label className="profile-field">
                     Current status
@@ -83,9 +91,10 @@ function ProfileForm() {
                         value={title}
                         onChange={(event) => setTitle(event.target.value)}
                         placeholder="Full Stack Engineer at Company"
-                        maxLength={120}
+                        maxLength={MAX_STATUS_LENGTH}
                         required
                     />
+                    <span className="profile-field-hint">{title.length}/{MAX_STATUS_LENGTH} characters</span>
                 </label>
                 <div className="profile-form-footer">
                     <p className="profile-form-message" role="status">{message}</p>

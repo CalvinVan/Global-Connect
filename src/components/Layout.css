@@ -28,15 +28,20 @@
 }
 
 .profile{
-    padding: 56px 40px 0;
+    width: 100%;
+    padding: 56px 16px 0;
 }
 
 .profile h2 {
-        margin: 24px 0 8px;
-    }
+    width: 100%;
+    margin: 24px 0 8px;
+    overflow-wrap: anywhere;
+}
 
 .profile p {
-    margin:0;
+    width: 100%;
+    margin: 0;
+    overflow-wrap: anywhere;
 }
 
 .sidebar-nav {
