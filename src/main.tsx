@@ -11,7 +11,7 @@ import SettingsPage from './pages/SettingsPage.tsx'
 
 import { BrowserRouter, Routes, Route } from 'react-router'
 
-// Apply the saved theme before the first render so the page doesn't flash
+
 applyTheme(getInitialTheme())
 
 createRoot(document.getElementById('root')!).render(

@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-/* Theme tokens. The sidebar green (#3daf6c) stays the same in both themes. */
 :root {
   color-scheme: light;
   --bg: #ffffff;
@@ -24,7 +23,7 @@
   --focus: #0b7a3b;
 }
 
-/* Dark: a soft charcoal rather than pure black, so the green sidebar reads clearly against it */
+
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #262827;
