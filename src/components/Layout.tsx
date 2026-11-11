@@ -11,7 +11,7 @@ export type Profile = {
 
 const defaultProfile: Profile = {
     name: "Avatar",
-    title: "Student at University of Texas at Dallas",
+    title: "Student_at_University_of_Texas_at_Dallas",
     picture: "",
 }
 

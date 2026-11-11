@@ -4,6 +4,8 @@ import Layout, { useProfile } from "../components/Layout"
 
 const MAX_NAME_LENGTH = 60
 const MAX_STATUS_LENGTH = 120
+const PROFILE_TEXT_PATTERN = "[A-Za-z0-9_.-]+"
+const PROFILE_TEXT_REGEX = /^[A-Za-z0-9_.-]+$/
 
 function ProfileForm() {
     const { profile, saveProfile } = useProfile()
@@ -45,6 +47,10 @@ function ProfileForm() {
             setMessage("Display name and status are required.")
             return
         }
+        if (!PROFILE_TEXT_REGEX.test(updatedProfile.name) || !PROFILE_TEXT_REGEX.test(updatedProfile.title)) {
+            setMessage("Display name and status can contain only letters, numbers, underscores, hyphens, and periods.")
+            return
+        }
         if (updatedProfile.name.length > MAX_NAME_LENGTH || updatedProfile.title.length > MAX_STATUS_LENGTH) {
             setMessage(`Display name must be ${MAX_NAME_LENGTH} characters or fewer and status must be ${MAX_STATUS_LENGTH} characters or fewer.`)
             return
@@ -80,9 +86,13 @@ function ProfileForm() {
                         value={name}
                         onChange={(event) => setName(event.target.value)}
                         maxLength={MAX_NAME_LENGTH}
+                        pattern={PROFILE_TEXT_PATTERN}
+                        title="Use only letters, numbers, underscores, hyphens, and periods."
                         required
                     />
-                    <span className="profile-field-hint">{name.length}/{MAX_NAME_LENGTH} characters</span>
+                    <span className="profile-field-hint">
+                        {name.length}/{MAX_NAME_LENGTH} characters. Use letters, numbers, _, -, and . only.
+                    </span>
                 </label>
                 <label className="profile-field">
                     Current status
@@ -90,11 +100,15 @@ function ProfileForm() {
                         type="text"
                         value={title}
                         onChange={(event) => setTitle(event.target.value)}
-                        placeholder="Full Stack Engineer at Company"
+                        placeholder="Full_Stack_Engineer_at_Company"
                         maxLength={MAX_STATUS_LENGTH}
+                        pattern={PROFILE_TEXT_PATTERN}
+                        title="Use only letters, numbers, underscores, hyphens, and periods. Spaces are not allowed."
                         required
                     />
-                    <span className="profile-field-hint">{title.length}/{MAX_STATUS_LENGTH} characters</span>
+                    <span className="profile-field-hint">
+                        {title.length}/{MAX_STATUS_LENGTH} characters. Use letters, numbers, _, -, and . only.
+                    </span>
                 </label>
                 <div className="profile-form-footer">
                     <p className="profile-form-message" role="status">{message}</p>
