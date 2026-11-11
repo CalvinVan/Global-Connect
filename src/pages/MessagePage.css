@@ -22,7 +22,7 @@
     width: 56px;
     height: 56px;
     flex-shrink: 0;
-    color: #cfcdcd;
+    color: var(--icon-muted);
 }
 
 .message-list {
@@ -53,8 +53,8 @@
 
 .message-bubble.them {
     align-self: flex-start;
-    background: #d9d9d9;
-    color: #111;
+    background: var(--field-strong-bg);
+    color: var(--text);
 }
 
 .message-bubble::after {
@@ -91,9 +91,10 @@
     min-width: 0;
     height: 36px;
     padding: 0 10px;
-    border: 1px solid #e4e4e4;
+    border: 1px solid var(--input-border);
     border-radius: 4px;
-    background: #f3f3f3;
+    background: var(--input-bg);
+    color: var(--text);
     font: inherit;
     font-size: 0.875rem;
 }

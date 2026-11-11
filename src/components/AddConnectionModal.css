@@ -3,11 +3,12 @@
     padding: 0;
     border: none;
     border-radius: 20px;
-    background: #fff;
+    background: var(--surface);
+    color: var(--text);
 }
 
 .connection-modal::backdrop {
-    background: rgb(217 217 217 / 75%);
+    background: var(--backdrop);
 }
 
 .connection-modal-body {
@@ -28,12 +29,12 @@
     border: none;
     border-radius: 50%;
     background: none;
-    color: #868585;
+    color: var(--text-subtle);
     cursor: pointer;
 }
 
 .modal-close:hover {
-    background: #eeeeee;
+    background: var(--hover);
 }
 
 .modal-header {
@@ -51,7 +52,7 @@
     width: 72px;
     height: 72px;
     flex-shrink: 0;
-    color: #cfcdcd;
+    color: var(--icon-muted);
 }
 
 .modal-message {
@@ -59,14 +60,15 @@
     padding: 16px 18px;
     border: none;
     border-radius: 20px;
-    background: #d9d9d9;
+    background: var(--field-strong-bg);
+    color: var(--text);
     font: inherit;
     font-size: 1.125rem;
     resize: vertical;
 }
 
 .modal-message::placeholder {
-    color: #000;
+    color: var(--text);
     font-weight: 500;
 }
 

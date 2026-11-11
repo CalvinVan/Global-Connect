@@ -21,7 +21,7 @@ function ConnectionsPage() {
                 <ul className="connections-display">
                     {connections.map((connection) =>(
                         <li key={connection.id} className="connection-row">
-                            <FaUserCircle size={48} color="#cfcdcd" />
+                            <FaUserCircle size={48} color="var(--icon-muted)" />
                             <div className="connection-info">
                                 <p className="connection-name">{connection.name}</p>
                                 <p className="connection-title">{connection.title}</p>

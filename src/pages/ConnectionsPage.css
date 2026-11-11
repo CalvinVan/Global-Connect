@@ -3,7 +3,7 @@
     margin:0;
     padding: 16px 24px;
     font-size: 1.25rem;
-    border-bottom: 1px solid #eae5ee
+    border-bottom: 1px solid var(--hairline)
 }
 
 .connections-display {
@@ -17,7 +17,7 @@
     align-items: center;
     gap: 24px;
     padding: 12px 16px;
-    border-bottom: 1px solid #eae5ee;
+    border-bottom: 1px solid var(--hairline);
 }
 
 .connection-info {
@@ -32,10 +32,11 @@
 .connection-title {
     margin: 2px 0 0;
     font-size: 0.75rem;
-    color: #777777
+    color: var(--text-muted)
 }
 
 .message-button {
+    color: var(--text);
     background: none;
     border: none;
     cursor: pointer;

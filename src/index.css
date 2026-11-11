@@ -1,8 +1,54 @@
-*{ 
-  box-sizing: border-box; 
+*{
+  box-sizing: border-box;
 }
 
-body{ 
-  margin: 0; 
-  font-family: system-ui, sans-serif; 
+/* Theme tokens. The sidebar green (#3daf6c) stays the same in both themes. */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #777777;
+  --text-subtle: #868585;
+  --header-bg: #d9d9d9;
+  --hairline: #eae5ee;
+  --hairline-strong: #d9d9d9;
+  --field-bg: #eae5ee;
+  --field-strong-bg: #d9d9d9;
+  --input-bg: #f3f3f3;
+  --input-border: #e4e4e4;
+  --icon-muted: #cfcdcd;
+  --hover: #eeeeee;
+  --disabled-bg: #d9d9d9;
+  --backdrop: rgb(217 217 217 / 75%);
+  --focus: #0b7a3b;
+}
+
+/* Dark: a soft charcoal rather than pure black, so the green sidebar reads clearly against it */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #262827;
+  --surface: #2f3230;
+  --text: #ececea;
+  --text-muted: #a3a7a4;
+  --text-subtle: #9a9e9b;
+  --header-bg: #323533;
+  --hairline: #393c3a;
+  --hairline-strong: #434745;
+  --field-bg: #414543;
+  --field-strong-bg: #3a3d3b;
+  --input-bg: #303331;
+  --input-border: #434745;
+  --icon-muted: #6b706d;
+  --hover: #3a3d3b;
+  --disabled-bg: #434745;
+  --backdrop: rgb(0 0 0 / 55%);
+  --focus: #5fd08e;
+}
+
+body{
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }

@@ -10,7 +10,7 @@
 
 .settings-section + .settings-section {
     margin-top: 16px;
-    border-top: 1px solid #eae5ee;
+    border-top: 1px solid var(--hairline);
 }
 
 .settings-heading {
@@ -25,7 +25,7 @@
     align-items: center;
     gap: 24px;
     padding: 14px 0;
-    border-bottom: 1px solid #eae5ee;
+    border-bottom: 1px solid var(--hairline);
 }
 
 .settings-label label {
@@ -35,15 +35,15 @@
 .settings-help {
     margin: 2px 0 0;
     font-size: 0.8125rem;
-    color: #777777;
+    color: var(--text-muted);
 }
 
 .settings-control {
     width: 100%;
     padding: 8px 12px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--hairline-strong);
     border-radius: 8px;
-    background: #ffffff;
+    background: var(--surface);
     color: inherit;
     font: inherit;
     font-size: 0.9375rem;
@@ -51,7 +51,7 @@
 
 .settings-control:focus-visible,
 .settings-theme-caption input:focus-visible {
-    outline: 2px solid #0b7a3b;
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
 }
 
@@ -86,12 +86,12 @@
     height: 116px;
     overflow: hidden;
     border-radius: 10px;
-    outline: 1px solid #d9d9d9;
+    outline: 1px solid var(--hairline-strong);
     outline-offset: 0;
 }
 
 .settings-theme-option:has(input:checked) .settings-preview {
-    outline: 2px solid #0b7a3b;
+    outline: 2px solid var(--focus);
     outline-offset: 3px;
 }
 
@@ -127,10 +127,10 @@
 .settings-preview--light .settings-preview-header { background: #d9d9d9; }
 .settings-preview--light .settings-preview-row { background: #eae5ee; }
 
-.settings-preview--dark .settings-preview-sidebar { background: #2f8a55; }
-.settings-preview--dark .settings-preview-main { background: #1c2420; }
-.settings-preview--dark .settings-preview-header { background: #2a3530; }
-.settings-preview--dark .settings-preview-row { background: #3a4741; }
+/* fixed colors: each preview always depicts its own theme */
+.settings-preview--dark .settings-preview-main { background: #262827; }
+.settings-preview--dark .settings-preview-header { background: #323533; }
+.settings-preview--dark .settings-preview-row { background: #434745; }
 
 .settings-theme-caption {
     display: flex;
@@ -141,7 +141,7 @@
 
 .settings-theme-caption input {
     margin: 0;
-    accent-color: #0b7a3b;
+    accent-color: var(--focus);
 }
 
 @media (max-width: 640px) {

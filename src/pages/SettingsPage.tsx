@@ -1,9 +1,11 @@
 import "./ConnectionsPage.css"
 import "./SettingsPage.css"
 
+import { useState } from "react"
 import Layout from "../components/Layout"
+import { getCurrentTheme, setTheme, type Theme } from "../theme"
 
-// Purely visual settings view: controls are uncontrolled and nothing is saved.
+// General preferences are visual only; the theme picker is live and saved.
 
 const languages = [
     { value: 'en-US', label: 'English (US)' },
@@ -22,12 +24,19 @@ const timeZones = [
     { value: 'America/Los_Angeles', label: 'Pacific (UTC−8)' },
 ]
 
-const themes = [
+const themes: { value: Theme, label: string }[] = [
     { value: 'light', label: 'Light' },
     { value: 'dark', label: 'Dark' },
 ]
 
 function SettingsPage() {
+    const [theme, setThemeState] = useState<Theme>(getCurrentTheme)
+
+    function handleThemeChange(next: Theme) {
+        setTheme(next)
+        setThemeState(next)
+    }
+
     return (
         <Layout>
             <h1 className="page-title">Settings</h1>
@@ -81,10 +90,10 @@ function SettingsPage() {
                     <fieldset className="settings-themes">
                         <legend className="settings-legend">Theme</legend>
                         <div className="settings-theme-options">
-                            {themes.map((theme) => (
-                                <label key={theme.value} className="settings-theme-option">
+                            {themes.map((option) => (
+                                <label key={option.value} className="settings-theme-option">
                                     {/* Miniature of the app shell: sidebar strip, header bar, list rows */}
-                                    <div className={`settings-preview settings-preview--${theme.value}`} aria-hidden="true">
+                                    <div className={`settings-preview settings-preview--${option.value}`} aria-hidden="true">
                                         <span className="settings-preview-sidebar" />
                                         <span className="settings-preview-main">
                                             <span className="settings-preview-header" />
@@ -97,10 +106,11 @@ function SettingsPage() {
                                         <input
                                             type="radio"
                                             name="theme"
-                                            value={theme.value}
-                                            defaultChecked={theme.value === 'light'}
+                                            value={option.value}
+                                            checked={theme === option.value}
+                                            onChange={() => handleThemeChange(option.value)}
                                         />
-                                        {theme.label}
+                                        {option.label}
                                     </span>
                                 </label>
                             ))}
