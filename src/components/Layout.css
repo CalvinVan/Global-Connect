@@ -206,7 +206,7 @@
     gap: 16px;
     height: 56px;
     padding: 0 12px;
-    background: #d9d9d9;
+    background: var(--header-bg);
 }
 
 .search-bar{
@@ -216,8 +216,8 @@
     width: 260px;
     padding: 8px 12px;
     border-radius: 18px;
-    background: #eae5ee;
-    color: #868585;
+    background: var(--field-bg);
+    color: var(--text-subtle);
 }
 
 .search-bar input{
@@ -225,6 +225,7 @@
     min-width: 0;
     border: none;
     background: none;
+    color: var(--text);
     outline: none;
 }
 
@@ -239,7 +240,7 @@
 }
 
 .search-button:focus-visible{
-    outline: 2px solid #3daf6c;
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
 }
 
@@ -247,12 +248,13 @@
 .connections-link{
     display: flex;
     align-items: center;
-    color: #868585;
+    color: var(--text-subtle);
     text-decoration: none;
 }
 
 .connections-link{
     margin-left: auto;
+    color: #868585; /* sits on the bright green pill in both themes */
     gap: 10px;
     padding: 6px 14px;
     border-radius: 8px;

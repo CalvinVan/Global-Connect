@@ -9,14 +9,14 @@
     align-items: center;
     gap: 48px;
     padding: 24px 32px 24px 20px;
-    border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1px solid var(--hairline-strong);
 }
 
 .search-avatar {
     width: 76px;
     height: 76px;
     flex-shrink: 0;
-    color: #cfcdcd;
+    color: var(--icon-muted);
 }
 
 .search-info {
@@ -33,7 +33,7 @@
 .search-title {
     margin: 2px 0 0;
     font-size: 0.95rem;
-    color: #868585;
+    color: var(--text-subtle);
 }
 
 .search-action {
@@ -55,7 +55,7 @@
 }
 
 .search-action:disabled {
-    background: #d9d9d9;
+    background: var(--disabled-bg);
     cursor: default;
 }
 

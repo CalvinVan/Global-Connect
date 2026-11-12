@@ -1,5 +1,6 @@
 import { FaUserCircle } from  'react-icons/fa'
 import { Link } from "react-router"
+import { useNavigate } from 'react-router'
 
 type SideBarProps = {
     name: string
@@ -7,7 +8,9 @@ type SideBarProps = {
     picture: string
 }
 
-function Sidebar({ name, title, picture }: SideBarProps) {
+function Sidebar({name, title}: SideBarProps) {
+    const navigate = useNavigate()
+
     return (
         <aside className="sidebar">
             <div className="profile">
@@ -19,7 +22,7 @@ function Sidebar({ name, title, picture }: SideBarProps) {
             </div>
             <nav className="sidebar-nav">
                 <Link to="/profile" className="sidebar-nav-link">Profile</Link>
-                <button>Settings</button>
+                <button onClick={() => navigate('/settings')}>Settings</button>
                 <button>Logout</button>
             </nav>
         </aside>
