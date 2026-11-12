@@ -8,7 +8,7 @@ type SideBarProps = {
     picture: string
 }
 
-function Sidebar({name, title}: SideBarProps) {
+function Sidebar({name, title, picture}: SideBarProps) {
     const navigate = useNavigate()
 
     return (
