@@ -11,14 +11,15 @@ type SearchResult = {
     title: string
     kind: 'person' | 'job'
     done: boolean // connection request sent / job applied
+    description?: string // this will be for jobs. ? makes it optional
 }
 
 const initialResults: SearchResult[] = [
     { id: 1, name: 'Bruce Wayne', title: 'CEO @ Wayne Tech Industries', kind: 'person', done: false },
     { id: 2, name: 'Chris Hansen', title: 'TV Host @ Dateline NBC', kind: 'person', done: true },
     { id: 3, name: 'Zendaya', title: 'Actress', kind: 'person', done: false },
-    { id: 4, name: "McDonald's", title: 'Team Member', kind: 'job', done: false },
-    { id: 5, name: 'Hamburger Cheeseburger Bigmac Whopper', title: 'Hamburger Cheeseburger Bigmac Whopper', kind: 'job', done: true },
+    { id: 4, name: "McDonald's", title: 'Team Member', kind: 'job', done: false, description: 'Lorem Ipsum Burger Flipper Role' },
+    { id: 5, name: 'Hamburger Cheeseburger Bigmac Whopper', title: 'Hamburger Cheeseburger Bigmac Whopper', kind: 'job', done: true, description: "Bigmac Bigmac Description" },
     { id: 6, name: 'Joe Biden', title: 'Former President @ United States of America', kind: 'person', done: false },
 ]
 
@@ -31,9 +32,12 @@ function SearchPage() {
     const [results, setResults] = useState(initialResults)
     const [selected, setSelected] = useState<SearchResult | null>(null)
 
-    const markConnected = (id: number) => {
+    const markDone = (id: number) => {
         setResults((previous) => previous.map((result) => (result.id === id ? { ...result, done: true } : result)))
     }
+
+    const referralConnections = results.filter((result) => result.kind === 'person' && result.done).map((result) => result.name) // this essentially creates a list of people who are marked as "connected" for the purpose of choosing who you want as a referral
+    
 
     return (
         <Layout>
@@ -49,21 +53,37 @@ function SearchPage() {
                             type="button"
                             className="search-action"
                             disabled={result.done}
-                            onClick={result.kind === 'person' ? () => setSelected(result) : undefined}
+                            onClick={() => setSelected(result)} //previously it was person specific now it is allowed for both person and joob
                         >
                             {buttonLabel(result)}
                         </button>
                     </li>
                 ))}
             </ul>
-
-            {selected && (
+            
+            {/* if below selected if person, we want to open up connection model */}
+            {selected?.kind === 'person' && (
                 <AddConnectionModal
                     name={selected.name}
-                    onSend={() => markConnected(selected.id)}
+                    onSend={() => markDone(selected.id)}
                     onClose={() => setSelected(null)}
                 />
             )}
+
+           
+             
+            {/* below it will be logic for apply job modal but is commented out since it hasn't been implemented yet 
+            
+            {selected?.kind === 'job' && (
+                <ApplyJobModal
+                parameters here
+                
+                />
+            )}  
+
+             */}
+            
+        
         </Layout>
     )
 }
