@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ChangeEvent, type MouseEvent, type SynteheticEvent } from 'react'
+import { useEffect, useRef, useState, type ChangeEvent, type MouseEvent, type SyntheticEvent } from 'react'
 import { FaBriefcase } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
 import './ApplyJobModal.css'
@@ -14,7 +14,7 @@ type ApplyJobModalProps = {
 }
 
 
-function ApplyJobModal({company, role, description, onApply, onClose}){
+function ApplyJobModal({company, role, description, connections, onApply, onClose}: ApplyJobModalProps){
     const dialogRef = useRef<HTMLDialogElement>(null)
     const [resume, setResume] = useState<File | null>(null) // this will store a resume that we can send in
     const [referral, setReferral] = useState('') //Store referral given to job
@@ -37,8 +37,8 @@ function ApplyJobModal({company, role, description, onApply, onClose}){
         if (event.target === dialogRef.current) onClose()
     }
 
-    const handleResumeChange = (event: ChangeEvent<HTMLInputElement) => {
-        setResume(event.target.files?[0] ?? null)
+    const handleResumeChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setResume(event.target.files?.[0] ?? null)
     }
 
     const submitApplication = () => {
@@ -68,7 +68,20 @@ function ApplyJobModal({company, role, description, onApply, onClose}){
                     </div>
                 </header>
             
-            
+            {applied ? (
+                <div className="modal-success" role="status">
+                    <p className="modal-success-title"> Application submitted!</p>
+                    <p>Your application for {role} at {company} was sent with {resume?.name}.</p>
+                    {referral && <p>Referred by {referral}.</p>}
+                    <button type="button" className= "modal-action" onClick={onClose}> Close </button>
+
+                </div>
+            ) : (
+                <>
+                <p>test</p>
+                </>
+            )}
+
             </div>
 
 
