@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ChangeEvent, type MouseEvent, type SynteheticEvent } from 'react'
+import { FaBriefcase } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
 import './ApplyJobModal.css'
 import './AddConnectionModal.css'
@@ -47,7 +48,32 @@ function ApplyJobModal({company, role, description, onApply, onClose}){
     }
 
     return(
-        <p>hi</p>
+        <dialog
+            ref={dialogRef}
+            className= "connection-modal"
+            aria-labelledby= "job-modal-title"
+            onCancel= {handleCancel}
+            onClick= {handleBackdropClick}
+        >
+            <div className = "connection-modal-body">
+                <button type="button" className="modal-close" onClick={onClose} aria-label="Close">
+                    <MdClose size={28} />
+                </button>
+
+                <header className = "modal-header">
+                    <FaBriefcase className="modal-avatar" aria-hidden="true" />
+                    <div>
+                        <h2 id= "job-modal-title">{role}</h2>
+                        <p className="modal-subtitle">{company}</p>
+                    </div>
+                </header>
+            
+            
+            </div>
+
+
+
+        </dialog>
     )
 }
 
