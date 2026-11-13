@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FaUserCircle } from 'react-icons/fa'
 import Layout from '../components/Layout'
 import AddConnectionModal from '../components/AddConnectionModal'
+import ApplyJobModal from '../components/ApplyJobModal'
 import './SearchPage.css'
 
 type SearchResult = {
