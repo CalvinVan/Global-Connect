@@ -1,152 +1,50 @@
-/* main page related styling */
-.layout{ 
-    display: grid; 
-    grid-template-columns: 240px 1fr; 
-    height: 100vh; 
-}
-
-
-/* dashbaord content related styling */
-.main{  
-    display: flex; 
-    flex-direction: column; 
-}
-
-.connections-list { 
-    flex: 1; 
-    overflow-y: auto; 
-}
-
-
-/* sidebar related styling */
-.sidebar { 
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background: #3daf6c; 
-    color: white; 
-}
-
-.profile{
-    padding: 56px 40px 0;
-}
-
-.profile h2 {
-        margin: 24px 0 8px;
-    }
-
-.profile p {
-    margin:0;
-}
-
-.sidebar-nav {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 0 4px 4px;
-}
-
-.sidebar-nav button{
-    width: 100%;
-    padding:8px;
-    border: none;
-    border-top: 2px solid white;
-    background: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-
-/* header related styling */
-.header { 
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    height: 56px;
-    padding: 0 12px;
-    background: #d9d9d9;
-}
-
-.search-bar{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 260px;
-    padding: 8px 12px;
-    border-radius: 18px;
-    background: #eae5ee;
-}
-
-.search-bar input{
-    flex: 1;
-    min-width: 0;
-    border: none;
-    background: none;
-    outline: none;
-}
-
-.home-link,
-.connections-link{
-    display: flex;
-    align-items: center;
-    color: #868585;
-    text-decoration: none;
-}
-
-.connections-link{
-    margin-left: auto;
-    gap: 10px;
-    padding: 6px 14px;
-    border-radius: 8px;
-    background: #3cfd6c;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.connections-link:hover{
-    background: #a5f3a5
-}
-
-/* styling for other connections page stuff since it may be later moved to a layout.css file if we make the layout a component*/
-.page-title {
-    margin:0;
-    padding: 16px 24px;
-    font-size: 1.25rem;
-    border-bottom: 1px solid #eae5ee
-}
-
-.connections-display {
+/* dashboard connections list (sidebar + header come from components/Layout.css) */
+.dashboard-connections {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.connection-row {
+.dashboard-row {
     display: flex;
     align-items: center;
-    gap: 24px;
-    padding: 12px 16px;
-    border-bottom: 1px solid #eae5ee;
+    gap: 32px;
+    padding: 20px 32px 20px 20px;
+    border-bottom: 1px solid var(--hairline-strong);
 }
 
-.connection-info {
+.dashboard-avatar {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    color: var(--icon-muted);
+}
+
+.dashboard-info {
     flex: 1;
+    min-width: 0;
 }
 
-.connection-name {
+.dashboard-name {
     margin: 0;
+    font-size: 1.125rem;
     font-weight: bold;
 }
 
-.connection-title {
+.dashboard-title {
     margin: 2px 0 0;
     font-size: 0.75rem;
-    color: #777777
+    color: var(--text-muted);
 }
 
-.message-button {
-    background: none;
-    border: none;
-    cursor: pointer;
+@media (max-width: 1100px) {
+    .dashboard-row {
+        gap: 20px;
+        padding: 16px;
+    }
+
+    .dashboard-avatar {
+        width: 56px;
+        height: 56px;
+    }
 }
