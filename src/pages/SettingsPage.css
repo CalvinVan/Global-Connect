@@ -97,7 +97,6 @@
 
 .settings-preview-sidebar {
     width: 36px;
-    background: #3daf6c;
 }
 
 .settings-preview-main {
@@ -123,14 +122,16 @@
     width: 48%;
 }
 
+.settings-preview--light .settings-preview-sidebar { background: #3daf6c; }
 .settings-preview--light .settings-preview-main { background: #ffffff; }
 .settings-preview--light .settings-preview-header { background: #d9d9d9; }
 .settings-preview--light .settings-preview-row { background: #eae5ee; }
 
 /* fixed colors: each preview always depicts its own theme */
-.settings-preview--dark .settings-preview-main { background: #262827; }
-.settings-preview--dark .settings-preview-header { background: #323533; }
-.settings-preview--dark .settings-preview-row { background: #434745; }
+.settings-preview--dark .settings-preview-sidebar { background: #2a7a4b; }
+.settings-preview--dark .settings-preview-main { background: #2e3035; }
+.settings-preview--dark .settings-preview-header { background: #383a40; }
+.settings-preview--dark .settings-preview-row { background: #4a4d54; }
 
 .settings-theme-caption {
     display: flex;

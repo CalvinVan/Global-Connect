@@ -23,8 +23,8 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: #3daf6c; 
-    color: white; 
+    background: var(--accent); 
+    color: var(--on-accent); 
 }
 
 .profile{
@@ -55,9 +55,9 @@
     width: 100%;
     padding:8px;
     border: none;
-    border-top: 2px solid white;
+    border-top: 2px solid var(--on-accent);
     background: none;
-    color: white;
+    color: var(--on-accent);
     font-size: 1rem;
     cursor: pointer;
 }
@@ -72,8 +72,8 @@
 .sidebar-nav-link {
     width: 100%;
     padding: 8px;
-    border-top: 2px solid white;
-    color: white;
+    border-top: 2px solid var(--on-accent);
+    color: var(--on-accent);
     text-decoration: none;
 }
 
@@ -97,17 +97,17 @@
 
 .profile-page-intro {
     margin: 8px 0 28px;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .profile-form {
     display: grid;
     gap: 20px;
     padding: 28px;
-    border: 1px solid #e4e7e5;
+    border: 1px solid var(--card-border);
     border-radius: 12px;
-    background: white;
-    box-shadow: 0 4px 16px rgb(0 0 0 / 5%);
+    background: var(--surface);
+    box-shadow: var(--card-shadow);
 }
 
 .profile-picture-preview {
@@ -117,8 +117,8 @@
     place-items: center;
     overflow: hidden;
     border-radius: 50%;
-    background: #edf5ef;
-    color: #3daf6c;
+    background: var(--accent-soft);
+    color: var(--accent-text);
     font-size: 7rem;
 }
 
@@ -137,18 +137,19 @@
 .profile-field input[type="text"] {
     width: 100%;
     padding: 11px 12px;
-    border: 1px solid #cfd7d1;
+    border: 1px solid var(--input-border-strong);
     border-radius: 6px;
+    background: var(--field-inset);
     font: inherit;
 }
 
 .profile-field input:focus-visible {
-    outline: 2px solid #3daf6c;
+    outline: 2px solid var(--accent-text);
     outline-offset: 2px;
 }
 
 .profile-field-hint {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     font-weight: 400;
 }
@@ -162,22 +163,22 @@
 
 .profile-form-message {
     margin: 0;
-    color: #3a6046;
+    color: var(--status-text);
 }
 
 .profile-save-button {
     padding: 10px 18px;
     border: 0;
     border-radius: 6px;
-    background: #258a4c;
-    color: white;
+    background: var(--action-strong);
+    color: var(--on-accent);
     font: inherit;
     font-weight: 600;
     cursor: pointer;
 }
 
 .profile-save-button:hover {
-    background: #1d713d;
+    background: var(--action-strong-hover);
 }
 
 @media (max-width: 640px) {
@@ -254,15 +255,15 @@
 
 .connections-link{
     margin-left: auto;
-    color: #868585; /* sits on the bright green pill in both themes */
+    color: var(--pill-text);
     gap: 10px;
     padding: 6px 14px;
     border-radius: 8px;
-    background: #3cfd6c;
+    background: var(--pill-bg);
     font-size: 1.5rem;
     font-weight: bold;
 }
 
 .connections-link:hover{
-    background: #a5f3a5
+    background: var(--pill-hover);
 }

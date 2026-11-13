@@ -16,7 +16,7 @@ function Sidebar({name, title, picture}: SideBarProps) {
             <div className="profile">
                 {picture
                     ? <img className="sidebar-profile-picture" src={picture} alt={`${name}'s profile`} />
-                    : <FaUserCircle size={120} color="#0b7a3b" aria-hidden="true" />}
+                    : <FaUserCircle size={120} color="var(--avatar-on-accent)" aria-hidden="true" />}
                 <h2>{name}</h2>
                 <p>{title}</p>
             </div>
