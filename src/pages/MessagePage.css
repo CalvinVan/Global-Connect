@@ -47,8 +47,8 @@
 
 .message-bubble.me {
     align-self: flex-end;
-    background: #3daf6c;
-    color: #fff;
+    background: var(--accent);
+    color: var(--on-accent);
 }
 
 .message-bubble.them {
@@ -100,7 +100,7 @@
 }
 
 .message-composer input:focus {
-    border-color: #3daf6c;
+    border-color: var(--accent-text);
     outline: 2px solid rgb(61 175 108 / 25%);
 }
 
@@ -113,8 +113,8 @@
     padding: 0;
     border: 0;
     border-radius: 50%;
-    background: #3daf6c;
-    color: #fff;
+    background: var(--accent);
+    color: var(--on-accent);
     cursor: pointer;
 }
 

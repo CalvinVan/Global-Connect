@@ -73,7 +73,7 @@
 }
 
 .modal-message:focus {
-    outline: 2px solid #1fae5b;
+    outline: 2px solid var(--accent-ring);
 }
 
 .modal-action {
@@ -81,8 +81,8 @@
     padding: 12px 40px;
     border: none;
     border-radius: 999px;
-    background: #1fae5b;
-    color: #fff;
+    background: var(--action);
+    color: var(--on-accent);
     font: inherit;
     font-size: 1.5rem;
     font-weight: bold;
@@ -90,11 +90,11 @@
 }
 
 .modal-action:hover {
-    background: #1a9a50;
+    background: var(--action-hover);
 }
 
 .modal-action:disabled {
-    background: #a6d8b9;
+    background: var(--action-disabled);
     cursor: default;
 }
 
@@ -112,7 +112,7 @@
 .modal-success-title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #1fae5b;
+    color: var(--success-text);
 }
 
 .modal-success .modal-action {
