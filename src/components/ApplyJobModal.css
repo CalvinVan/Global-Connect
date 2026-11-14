@@ -1,0 +1,35 @@
+-modal-subtitle {
+    margin: 4px 0 0;
+    font-size: 1.125 rem;
+    color: var(--text-subtile);
+}
+
+.model-description {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+.modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.modal-field input,
+.modal-field select {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 12px;
+    background: var(--field-strong-bg);
+    color: var(--text);
+    font: inherit;
+    font-weight: normal;
+}
+
+.modal-field input:focus,
+.modal-field select:focus {
+    outline: 2px solid var(--accent-ring);
+}
