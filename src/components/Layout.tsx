@@ -7,12 +7,24 @@ export type Profile = {
     name: string
     title: string
     picture: string
+    school: string
+    skills: string[]
+    experiences: string[]
+    resume: { fileName: string; data: string } | null
 }
 
 const defaultProfile: Profile = {
     name: "Avatar",
     title: "Student_at_University_of_Texas_at_Dallas",
     picture: "",
+    school: "",
+    skills: [],
+    experiences: [],
+    resume: null,
+}
+
+function isStringArray(value: unknown): value is string[] {
+    return Array.isArray(value) && value.every((item) => typeof item === "string")
 }
 
 function loadProfile(): Profile {
@@ -30,7 +42,25 @@ function loadProfile(): Profile {
                 typeof profile.title === "string" &&
                 typeof profile.picture === "string"
             ) {
-                return { name: profile.name, title: profile.title, picture: profile.picture }
+                const resume = "resume" in profile &&
+                    typeof profile.resume === "object" &&
+                    profile.resume !== null &&
+                    "fileName" in profile.resume &&
+                    "data" in profile.resume &&
+                    typeof profile.resume.fileName === "string" &&
+                    typeof profile.resume.data === "string"
+                    ? { fileName: profile.resume.fileName, data: profile.resume.data }
+                    : null
+
+                return {
+                    name: profile.name,
+                    title: profile.title,
+                    picture: profile.picture,
+                    school: "school" in profile && typeof profile.school === "string" ? profile.school : "",
+                    skills: "skills" in profile && isStringArray(profile.skills) ? profile.skills : [],
+                    experiences: "experiences" in profile && isStringArray(profile.experiences) ? profile.experiences : [],
+                    resume,
+                }
             }
         }
     } catch {
