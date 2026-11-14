@@ -27,7 +27,7 @@ function Sidebar({name, firstName, lastName, title, picture}: SideBarProps) {
             <nav className="sidebar-nav">
                 <Link to="/profile" className="sidebar-nav-link">Profile</Link>
                 <button onClick={() => navigate('/settings')}>Settings</button>
-                <button>Logout</button>
+                <button onClick={() => navigate('/', { replace: true })}>Logout</button>
             </nav>
         </aside>
 

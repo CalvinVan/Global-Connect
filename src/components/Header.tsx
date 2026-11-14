@@ -30,7 +30,7 @@ function Header() {
                 </button>
             </form>
 
-            <Link to="/" className="home-link">
+            <Link to="/landing" className="home-link" aria-label="Home">
                 <MdOutlineHome size={32} />
             </Link>
 
