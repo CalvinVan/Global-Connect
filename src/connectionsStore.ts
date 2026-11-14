@@ -43,3 +43,22 @@ export function addConnection(connection: Connection): void {
 export function isConnectionAdded(name: string): boolean {
     return getAddedConnections().some((c) => c.name === name)
 }
+
+const seedConnections: Connection[] = [
+    { name: 'Chris Hansen', title: 'Hamburger Cheeseburger Bigmac Whopper' },
+    { name: 'Atreya Ghosh', title: "Burger Flipper @ McDonald's" },
+    { name: 'Zenidy Le', title: "Hostess @ Chili's" },
+    { name: 'Leo dos Remedios', title: "Delivery Boy @ Domino's Pizza" },
+    { name: 'David Vu', title: 'Hostess @ Gen Korean BBQ' },
+]
+
+export function getAllConnections(): Connection[] {
+    const allConnections = [...seedConnections]
+    for (const connection of getAddedConnections()) {
+        const alreadyAdded = allConnections.some((c) => c.name === connection.name)
+        if (!alreadyAdded) {
+            allConnections.push(connection)
+        }
+    }
+    return allConnections
+}

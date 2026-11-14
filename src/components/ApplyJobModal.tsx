@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ChangeEvent, type MouseEvent, type SyntheticEvent } from 'react'
 import { FaBriefcase } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
+import { useProfile } from './Layout'
 import './ApplyJobModal.css'
 import './AddConnectionModal.css'
 
@@ -19,7 +20,9 @@ function ApplyJobModal({company, role, description, connections, onApply, onClos
     const [resume, setResume] = useState<File | null>(null) // this will store a resume that we can send in
     const [referral, setReferral] = useState('') //Store referral given to job
     const [applied, setApplied] = useState(false) // store state on whether to job as already been applied for
-    
+    const [resumeName, setResumeName] = useState('')
+    const { profile } = useProfile()
+
     // showModal() makes the rest of the page unclickable while the popup is open
     useEffect(() => {
         const dialog = dialogRef.current
@@ -44,6 +47,14 @@ function ApplyJobModal({company, role, description, connections, onApply, onClos
     const submitApplication = () => {
         if (!resume) return
         onApply()
+        setResumeName(resume.name)
+        setApplied(true)
+    }
+
+    const quickApply = () => {
+        if (!profile.resume) return
+        onApply()
+        setResumeName(profile.resume.fileName)
         setApplied(true)
     }
 
@@ -75,7 +86,7 @@ function ApplyJobModal({company, role, description, connections, onApply, onClos
             {applied ? (
                 <div className="modal-success" role="status">
                     <p className="modal-success-title"> Application submitted!</p>
-                    <p>Your application for {role} at {company} was sent with {resume?.name}.</p>
+                    <p>Your application for {role} at {company} was sent with {resumeName}.</p>
                     {referral && <p>Referred by {referral}.</p>}
                     <button type="button" className= "modal-action" onClick={onClose}> Close </button>
 
@@ -107,14 +118,27 @@ function ApplyJobModal({company, role, description, connections, onApply, onClos
                     </select>
                 </label>
 
-                <button
-                    type="button"
-                    className="modal-action"
-                    onClick={submitApplication}
-                    disabled={!resume}
-                >
-                    Apply
-                </button>
+                {profile.resume ? (
+                    <p className="modal-hint">Quick Apply will send your profile resume: {profile.resume.fileName}</p>
+                ) : (
+                    <p className="modal-hint">Save a resume on your Profile page to use Quick Apply.</p>
+                )}
+
+                <div className="modal-buttons">
+                    {profile.resume && (
+                        <button type="button" className="modal-action" onClick={quickApply}>
+                            Quick Apply
+                        </button>
+                    )}
+                    <button
+                        type="button"
+                        className="modal-action"
+                        onClick={submitApplication}
+                        disabled={!resume}
+                    >
+                        Apply
+                    </button>
+                </div>
                 </>
             )}
             </div>

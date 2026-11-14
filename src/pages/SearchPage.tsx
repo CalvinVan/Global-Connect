@@ -3,7 +3,7 @@ import { FaUserCircle } from 'react-icons/fa'
 import Layout from '../components/Layout'
 import AddConnectionModal from '../components/AddConnectionModal'
 import ApplyJobModal from '../components/ApplyJobModal'
-import { addConnection, isConnectionAdded } from '../connectionsStore'
+import { addConnection, getAllConnections, isConnectionAdded } from '../connectionsStore'
 import { appendMessage } from '../messagesStore'
 import './SearchPage.css'
 
@@ -53,7 +53,7 @@ function SearchPage() {
         setResults((previous) => previous.map((result) => (result.id === id ? { ...result, done: true } : result)))
     }
 
-    const referralConnections = results.filter((result) => result.kind === 'person' && result.done).map((result) => result.name) // this essentially creates a list of people who are marked as "connected" for the purpose of choosing who you want as a referral
+    const referralConnections = getAllConnections().map((connection) => connection.name)
     
 
     return (
