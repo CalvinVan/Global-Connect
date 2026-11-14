@@ -13,7 +13,7 @@ function isConnection(value: unknown): value is Connection {
     )
 }
 
-// Connections added this browser session (cleared when the tab closes).
+
 export function getAddedConnections(): Connection[] {
     try {
         const saved = sessionStorage.getItem(STORAGE_KEY)
@@ -22,7 +22,7 @@ export function getAddedConnections(): Connection[] {
         if (!Array.isArray(parsed)) return []
         return parsed.filter(isConnection).map(({ name, title }) => ({ name, title }))
     } catch {
-        // storage blocked or invalid JSON — treat as nothing added
+        
         return []
     }
 }
