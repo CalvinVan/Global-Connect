@@ -3,15 +3,20 @@ import { FaUserCircle } from "react-icons/fa"
 import Layout, { useProfile } from "../components/Layout"
 
 const MAX_NAME_LENGTH = 60
+const MAX_PERSON_NAME_LENGTH = 60
 const MAX_STATUS_LENGTH = 120
 const MAX_SCHOOL_LENGTH = 120
-const MAX_RESUME_SIZE = 1 * 1024 * 1024
+const MAX_RESUME_SIZE = 1024 * 1024
+const USERNAME_PATTERN = "[A-Za-z0-9_.-]+"
+const USERNAME_REGEX = /^[A-Za-z0-9_.-]+$/
 const PROFILE_TEXT_PATTERN = "[A-Za-z0-9_.-]+"
 const PROFILE_TEXT_REGEX = /^[A-Za-z0-9_.-]+$/
 
 function ProfileForm() {
     const { profile, saveProfile } = useProfile()
     const [name, setName] = useState(profile.name)
+    const [firstName, setFirstName] = useState(profile.firstName)
+    const [lastName, setLastName] = useState(profile.lastName)
     const [title, setTitle] = useState(profile.title)
     const [picture, setPicture] = useState(profile.picture)
     const [school, setSchool] = useState(profile.school)
@@ -76,6 +81,8 @@ function ProfileForm() {
         event.preventDefault()
         const updatedProfile = {
             name: name.trim(),
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
             title: title.trim(),
             picture,
             school: school.trim(),
@@ -83,16 +90,25 @@ function ProfileForm() {
             experiences: experiences.split("\n").map((experience) => experience.trim()).filter(Boolean),
             resume,
         }
-        if (!updatedProfile.name || !updatedProfile.title) {
-            setMessage("Display name and status are required.")
+        if (!updatedProfile.name || !updatedProfile.firstName || !updatedProfile.lastName || !updatedProfile.title) {
+            setMessage("First name, last name, username, and status are required.")
             return
         }
-        if (!PROFILE_TEXT_REGEX.test(updatedProfile.name) || !PROFILE_TEXT_REGEX.test(updatedProfile.title)) {
-            setMessage("Display name and status can contain only letters, numbers, underscores, hyphens, and periods.")
+        if (!USERNAME_REGEX.test(updatedProfile.name)) {
+            setMessage("Username can contain only letters, numbers, underscores, hyphens, and periods.")
             return
         }
-        if (updatedProfile.name.length > MAX_NAME_LENGTH || updatedProfile.title.length > MAX_STATUS_LENGTH) {
-            setMessage(`Display name must be ${MAX_NAME_LENGTH} characters or fewer and status must be ${MAX_STATUS_LENGTH} characters or fewer.`)
+        if (!PROFILE_TEXT_REGEX.test(updatedProfile.title)) {
+            setMessage("Status can contain only letters, numbers, underscores, hyphens, and periods.")
+            return
+        }
+        if (
+            updatedProfile.name.length > MAX_NAME_LENGTH ||
+            updatedProfile.firstName.length > MAX_PERSON_NAME_LENGTH ||
+            updatedProfile.lastName.length > MAX_PERSON_NAME_LENGTH ||
+            updatedProfile.title.length > MAX_STATUS_LENGTH
+        ) {
+            setMessage(`Names and username must be ${MAX_PERSON_NAME_LENGTH} characters or fewer and status must be ${MAX_STATUS_LENGTH} characters or fewer.`)
             return
         }
         if (updatedProfile.school.length > MAX_SCHOOL_LENGTH) {
@@ -135,18 +151,38 @@ function ProfileForm() {
                     )}
                 </label>
                 <label className="profile-field">
-                    Display name
+                    First name
+                    <input
+                        type="text"
+                        value={firstName}
+                        onChange={(event) => setFirstName(event.target.value)}
+                        maxLength={MAX_PERSON_NAME_LENGTH}
+                        required
+                    />
+                </label>
+                <label className="profile-field">
+                    Last name
+                    <input
+                        type="text"
+                        value={lastName}
+                        onChange={(event) => setLastName(event.target.value)}
+                        maxLength={MAX_PERSON_NAME_LENGTH}
+                        required
+                    />
+                </label>
+                <label className="profile-field">
+                    Username
                     <input
                         type="text"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
                         maxLength={MAX_NAME_LENGTH}
-                        pattern={PROFILE_TEXT_PATTERN}
+                        pattern={USERNAME_PATTERN}
                         title="Use only letters, numbers, underscores, hyphens, and periods."
                         required
                     />
                     <span className="profile-field-hint">
-                        {name.length}/{MAX_NAME_LENGTH} characters. Use letters, numbers, _, -, and . only.
+                        {name.length}/{MAX_NAME_LENGTH} characters. Shown as @{name || "username"}; use letters, numbers, _, -, and . only.
                     </span>
                 </label>
                 <label className="profile-field">

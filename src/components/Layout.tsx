@@ -5,6 +5,8 @@ import "./Layout.css"
 
 export type Profile = {
     name: string
+    firstName: string
+    lastName: string
     title: string
     picture: string
     school: string
@@ -15,6 +17,8 @@ export type Profile = {
 
 const defaultProfile: Profile = {
     name: "Avatar",
+    firstName: "",
+    lastName: "",
     title: "Student_at_University_of_Texas_at_Dallas",
     picture: "",
     school: "",
@@ -52,8 +56,11 @@ function loadProfile(): Profile {
                     ? { fileName: profile.resume.fileName, data: profile.resume.data }
                     : null
 
+                const username = profile.name.replace(/[^A-Za-z0-9_.-]/g, "_")
                 return {
-                    name: profile.name,
+                    name: username || "user",
+                    firstName: "firstName" in profile && typeof profile.firstName === "string" ? profile.firstName : "",
+                    lastName: "lastName" in profile && typeof profile.lastName === "string" ? profile.lastName : "",
                     title: profile.title,
                     picture: profile.picture,
                     school: "school" in profile && typeof profile.school === "string" ? profile.school : "",
@@ -97,7 +104,13 @@ function Layout({ children }: { children: ReactNode }) {
     return (
         <ProfileContext.Provider value={{ profile, saveProfile }}>
             <div className="layout">
-                <Sidebar name={profile.name} title={profile.title} picture={profile.picture} />
+                <Sidebar
+                    name={profile.name}
+                    firstName={profile.firstName}
+                    lastName={profile.lastName}
+                    title={profile.title}
+                    picture={profile.picture}
+                />
                 <div className="main">
                     <Header />
                     <main className="content">{children}</main>

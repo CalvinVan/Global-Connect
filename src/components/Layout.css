@@ -34,7 +34,7 @@
 
 .profile h2 {
     width: 100%;
-    margin: 24px 0 8px;
+    margin: 24px 0 4px;
     overflow-wrap: anywhere;
 }
 
@@ -42,6 +42,12 @@
     width: 100%;
     margin: 0;
     overflow-wrap: anywhere;
+}
+
+.profile .profile-handle {
+    margin-bottom: 8px;
+    color: var(--on-accent);
+    opacity: 0.8;
 }
 
 .sidebar-nav {
