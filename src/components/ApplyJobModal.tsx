@@ -78,14 +78,39 @@ function ApplyJobModal({company, role, description, connections, onApply, onClos
                 </div>
             ) : (
                 <>
-                <p>test</p>
+                <p className="modal-description">{description}</p>
+
+                <label className= "modal-field">
+                    Resume
+                    <input type="file" accept=".pdf,.doc,.docx" onChange={handleResumeChange} />
+                </label>
+
+                <label className= "modal-field">
+                    Referral (optional)
+                    <select value={referral} onChange={(event) => setReferral(event.target.value)} disabled={connections.length === 0}>
+                    
+                    <option value="">
+                        {connections.length === 0 ? 'No Connections yet': 'No Referral'}
+                    </option>
+                    {connections.map((connection) => (
+                        <option key={connection} value={connection}>
+                            {connection}
+                        </option>
+                    ))}
+                    </select>
+                </label>
+
+                <button
+                    type="button"
+                    className="modal-action"
+                    onClick={submitApplication}
+                    disabled={!resume}
+                >
+                    Apply
+                </button>
                 </>
             )}
-
             </div>
-
-
-
         </dialog>
     )
 }

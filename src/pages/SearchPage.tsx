@@ -69,19 +69,18 @@ function SearchPage() {
                     onClose={() => setSelected(null)}
                 />
             )}
-
-           
-             
-            {/* below it will be logic for apply job modal but is commented out since it hasn't been implemented yet 
             
             {selected?.kind === 'job' && (
                 <ApplyJobModal
-                parameters here
-                
+                    company={selected.name}
+                    role={selected.title}
+                    description={selected.description ?? ''}
+                    connections={referralConnections}
+                    onApply={() => markDone(selected.id)}
+                    onClose={() => setSelected(null)}
                 />
             )}  
 
-             */}
             
         
         </Layout>
