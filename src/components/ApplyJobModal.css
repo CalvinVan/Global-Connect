@@ -1,7 +1,15 @@
--modal-subtitle {
-    margin: 4px 0 0;
-    font-size: 1.125 rem;
-    color: var(--text-subtile);
+.modal-label{
+    margin: 0 0 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-subtle);
+}
+
+.modal-company {
+    margin: 0;
+    font-size: 1.125rem;
 }
 
 .model-description {
@@ -33,3 +41,4 @@
 .modal-field select:focus {
     outline: 2px solid var(--accent-ring);
 }
+

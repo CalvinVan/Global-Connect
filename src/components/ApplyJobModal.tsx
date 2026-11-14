@@ -63,10 +63,14 @@ function ApplyJobModal({company, role, description, connections, onApply, onClos
                 <header className = "modal-header">
                     <FaBriefcase className="modal-avatar" aria-hidden="true" />
                     <div>
+                        <p className="modal-label">Job Title</p>
                         <h2 id= "job-modal-title">{role}</h2>
-                        <p className="modal-subtitle">{company}</p>
                     </div>
                 </header>
+
+                <p className="modal-company">
+                    <strong>Company:</strong> {company}
+                </p>
             
             {applied ? (
                 <div className="modal-success" role="status">
@@ -78,7 +82,10 @@ function ApplyJobModal({company, role, description, connections, onApply, onClos
                 </div>
             ) : (
                 <>
-                <p className="modal-description">{description}</p>
+                <div>
+                    <p className="modal-label">Description</p>
+                    <p className="modal-description">{description}</p>
+                </div>
 
                 <label className= "modal-field">
                     Resume
