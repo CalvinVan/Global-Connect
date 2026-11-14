@@ -34,7 +34,7 @@
 
 .profile h2 {
     width: 100%;
-    margin: 24px 0 8px;
+    margin: 24px 0 4px;
     overflow-wrap: anywhere;
 }
 
@@ -42,6 +42,12 @@
     width: 100%;
     margin: 0;
     overflow-wrap: anywhere;
+}
+
+.profile .profile-handle {
+    margin-bottom: 8px;
+    color: var(--on-accent);
+    opacity: 0.8;
 }
 
 .sidebar-nav {
@@ -134,7 +140,8 @@
     font-weight: 600;
 }
 
-.profile-field input[type="text"] {
+.profile-field input[type="text"],
+.profile-field textarea {
     width: 100%;
     padding: 11px 12px;
     border: 1px solid var(--input-border-strong);
@@ -143,7 +150,16 @@
     font: inherit;
 }
 
+.profile-field textarea {
+    resize: vertical;
+}
+
 .profile-field input:focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
+}
+
+.profile-field textarea:focus-visible {
     outline: 2px solid var(--accent-text);
     outline-offset: 2px;
 }
@@ -152,6 +168,24 @@
     color: var(--text-secondary);
     font-size: 0.85rem;
     font-weight: 400;
+}
+
+.profile-resume {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+}
+
+.profile-resume button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent-text);
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .profile-form-footer {

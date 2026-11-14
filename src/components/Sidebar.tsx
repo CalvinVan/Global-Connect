@@ -4,20 +4,24 @@ import { useNavigate } from 'react-router'
 
 type SideBarProps = {
     name: string
+    firstName: string
+    lastName: string
     title: string
     picture: string
 }
 
-function Sidebar({name, title, picture}: SideBarProps) {
+function Sidebar({name, firstName, lastName, title, picture}: SideBarProps) {
     const navigate = useNavigate()
+    const fullName = [firstName, lastName].filter(Boolean).join(" ")
 
     return (
         <aside className="sidebar">
             <div className="profile">
                 {picture
-                    ? <img className="sidebar-profile-picture" src={picture} alt={`${name}'s profile`} />
+                    ? <img className="sidebar-profile-picture" src={picture} alt={`${fullName || name}'s profile`} />
                     : <FaUserCircle size={120} color="var(--avatar-on-accent)" aria-hidden="true" />}
-                <h2>{name}</h2>
+                <h2>{fullName || name}</h2>
+                <p className="profile-handle">@{name}</p>
                 <p>{title}</p>
             </div>
             <nav className="sidebar-nav">
