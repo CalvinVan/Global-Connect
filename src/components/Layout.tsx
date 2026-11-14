@@ -5,14 +5,30 @@ import "./Layout.css"
 
 export type Profile = {
     name: string
+    firstName: string
+    lastName: string
     title: string
     picture: string
+    school: string
+    skills: string[]
+    experiences: string[]
+    resume: { fileName: string; data: string } | null
 }
 
 const defaultProfile: Profile = {
     name: "Avatar",
+    firstName: "",
+    lastName: "",
     title: "Student_at_University_of_Texas_at_Dallas",
     picture: "",
+    school: "",
+    skills: [],
+    experiences: [],
+    resume: null,
+}
+
+function isStringArray(value: unknown): value is string[] {
+    return Array.isArray(value) && value.every((item) => typeof item === "string")
 }
 
 function loadProfile(): Profile {
@@ -30,7 +46,28 @@ function loadProfile(): Profile {
                 typeof profile.title === "string" &&
                 typeof profile.picture === "string"
             ) {
-                return { name: profile.name, title: profile.title, picture: profile.picture }
+                const resume = "resume" in profile &&
+                    typeof profile.resume === "object" &&
+                    profile.resume !== null &&
+                    "fileName" in profile.resume &&
+                    "data" in profile.resume &&
+                    typeof profile.resume.fileName === "string" &&
+                    typeof profile.resume.data === "string"
+                    ? { fileName: profile.resume.fileName, data: profile.resume.data }
+                    : null
+
+                const username = profile.name.replace(/[^A-Za-z0-9_.-]/g, "_")
+                return {
+                    name: username || "user",
+                    firstName: "firstName" in profile && typeof profile.firstName === "string" ? profile.firstName : "",
+                    lastName: "lastName" in profile && typeof profile.lastName === "string" ? profile.lastName : "",
+                    title: profile.title,
+                    picture: profile.picture,
+                    school: "school" in profile && typeof profile.school === "string" ? profile.school : "",
+                    skills: "skills" in profile && isStringArray(profile.skills) ? profile.skills : [],
+                    experiences: "experiences" in profile && isStringArray(profile.experiences) ? profile.experiences : [],
+                    resume,
+                }
             }
         }
     } catch {
@@ -67,7 +104,13 @@ function Layout({ children }: { children: ReactNode }) {
     return (
         <ProfileContext.Provider value={{ profile, saveProfile }}>
             <div className="layout">
-                <Sidebar name={profile.name} title={profile.title} picture={profile.picture} />
+                <Sidebar
+                    name={profile.name}
+                    firstName={profile.firstName}
+                    lastName={profile.lastName}
+                    title={profile.title}
+                    picture={profile.picture}
+                />
                 <div className="main">
                     <Header />
                     <main className="content">{children}</main>

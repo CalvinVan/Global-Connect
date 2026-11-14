@@ -3,6 +3,8 @@ import { FaUserCircle } from 'react-icons/fa'
 import Layout from '../components/Layout'
 import AddConnectionModal from '../components/AddConnectionModal'
 import ApplyJobModal from '../components/ApplyJobModal'
+import { addConnection, isConnectionAdded } from '../connectionsStore'
+import { appendMessage } from '../messagesStore'
 import './SearchPage.css'
 
 type SearchResult = {
@@ -29,10 +31,25 @@ function buttonLabel(result: SearchResult) {
 }
 
 function SearchPage() {
-    const [results, setResults] = useState(initialResults)
+    const [results, setResults] = useState(() =>
+        initialResults.map((result) =>
+            result.kind === 'person' && !result.done && isConnectionAdded(result.name)
+                ? { ...result, done: true }
+                : result,
+        ),
+    )
     const [selected, setSelected] = useState<SearchResult | null>(null)
 
-    const markDone = (id: number) => {
+    const markConnected = (id: number, text: string) => {
+        const result = results.find((r) => r.id === id)
+        if (result) {
+            addConnection({ name: result.name, title: result.title })
+            appendMessage(result.name, 'me', text, [])
+        }
+        setResults((previous) => previous.map((result) => (result.id === id ? { ...result, done: true } : result)))
+    }
+
+    const markApplied = (id: number) => {
         setResults((previous) => previous.map((result) => (result.id === id ? { ...result, done: true } : result)))
     }
 
@@ -65,7 +82,7 @@ function SearchPage() {
             {selected?.kind === 'person' && (
                 <AddConnectionModal
                     name={selected.name}
-                    onSend={() => markDone(selected.id)}
+                    onSend={(text) => markConnected(selected.id, text)}
                     onClose={() => setSelected(null)}
                 />
             )}
@@ -76,7 +93,7 @@ function SearchPage() {
                     role={selected.title}
                     description={selected.description ?? ''}
                     connections={referralConnections}
-                    onApply={() => markDone(selected.id)}
+                    onApply={() => markApplied(selected.id)}
                     onClose={() => setSelected(null)}
                 />
             )}  
