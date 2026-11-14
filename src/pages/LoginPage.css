@@ -1,0 +1,143 @@
+/* login page styling, built on the same css variables as Layout.css */
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    min-height: 100vh;
+    padding: 32px 16px;
+    background: var(--header-bg);
+    color: var(--text);
+}
+
+.login-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--accent-text);
+}
+
+.login-brand-name {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.login-form {
+    display: grid;
+    gap: 20px;
+    width: min(420px, 100%);
+    padding: 32px;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: var(--surface);
+    box-shadow: var(--card-shadow);
+}
+
+.login-title {
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.login-intro {
+    margin: -12px 0 4px;
+    color: var(--text-secondary);
+}
+
+.login-field {
+    display: grid;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.login-field input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--input-border-strong);
+    border-radius: 6px;
+    background: var(--field-inset);
+    color: var(--text);
+    font: inherit;
+    font-weight: 400;
+}
+
+.login-field input:focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
+}
+
+/* password input with the show/hide button sitting inside the field */
+.login-password {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login-password input {
+    padding-right: 44px;
+}
+
+.login-password-toggle {
+    position: absolute;
+    right: 8px;
+    display: grid;
+    place-items: center;
+    padding: 4px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: var(--text-subtle);
+    cursor: pointer;
+}
+
+.login-password-toggle:hover,
+.login-password-toggle:focus-visible {
+    background: var(--hover);
+}
+
+.login-message {
+    margin: 0;
+    color: var(--status-text);
+}
+
+.login-button {
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--action-strong);
+    color: var(--on-accent);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background: var(--action-strong-hover);
+}
+
+.login-button:focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
+}
+
+.login-footer {
+    margin: 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.login-link {
+    color: var(--accent-text);
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .login-brand-name {
+        font-size: 1.5rem;
+    }
+
+    .login-form {
+        padding: 24px 20px;
+    }
+}
