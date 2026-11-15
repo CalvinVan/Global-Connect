@@ -1,8 +1,10 @@
 /* main page related styling */
 .layout{ 
     display: grid; 
-    grid-template-columns: 240px 1fr; 
+    grid-template-columns: 240px minmax(0, 1fr); 
+    grid-template-rows: minmax(0, 1fr);
     height: 100vh; 
+    overflow: hidden;
 }
 
 
@@ -10,16 +12,24 @@
 .main{  
     display: flex; 
     flex-direction: column; 
+    min-height: 0;
+}
+
+.header {
+    flex-shrink: 0;
 }
 
 .content { 
     flex: 1; 
+    min-height: 0;
     overflow-y: auto; 
 }
 
 
 /* sidebar related styling */
 .sidebar { 
+    min-height: 0;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -279,25 +289,36 @@
     outline-offset: 2px;
 }
 
-.home-link,
-.connections-link{
+.back-button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text-subtle);
+}
+
+.back-button:hover{
+    color: var(--text);
+}
+
+.back-button:focus-visible{
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.header-icons{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.home-link{
     display: flex;
     align-items: center;
     color: var(--text-subtle);
     text-decoration: none;
 }
 
-.connections-link{
-    margin-left: auto;
-    color: var(--pill-text);
-    gap: 10px;
-    padding: 6px 14px;
-    border-radius: 8px;
-    background: var(--pill-bg);
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.connections-link:hover{
-    background: var(--pill-hover);
-}

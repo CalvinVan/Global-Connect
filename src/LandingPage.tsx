@@ -15,17 +15,28 @@ const connections = [
 function LandingPage() {
     return (
         <Layout>
-            <ul className="dashboard-connections">
-                {connections.map((connection) => (
-                    <li key={connection.id} className="dashboard-row">
-                        <FaUserCircle className="dashboard-avatar" aria-hidden="true" />
-                        <div className="dashboard-info">
-                            <p className="dashboard-name">{connection.name}</p>
-                            <p className="dashboard-title">{connection.title}</p>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+            <div className="dashboard">
+                <header className="dashboard-hero">
+                    <h1 className="dashboard-title-heading">Welcome to Global Connect</h1>
+                    <p className="dashboard-subtitle">Find your next opportunity.</p>
+                </header>
+                <section className="dashboard-card" aria-labelledby="dashboard-connections-heading">
+                    <h2 id="dashboard-connections-heading" className="dashboard-section-heading">
+                        Your Top Connections
+                    </h2>
+                    <ul className="dashboard-connections">
+                        {connections.map((connection) => (
+                            <li key={connection.id} className="dashboard-row">
+                                <FaUserCircle className="dashboard-avatar" aria-hidden="true" />
+                                <div className="dashboard-info">
+                                    <p className="dashboard-name">{connection.name}</p>
+                                    <p className="dashboard-title">{connection.title}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            </div>
         </Layout>
     )
 }
