@@ -9,8 +9,6 @@ const MAX_SCHOOL_LENGTH = 120
 const MAX_RESUME_SIZE = 1024 * 1024
 const USERNAME_PATTERN = "[A-Za-z0-9_.-]+"
 const USERNAME_REGEX = /^[A-Za-z0-9_.-]+$/
-const PROFILE_TEXT_PATTERN = "[A-Za-z0-9_.-]+"
-const PROFILE_TEXT_REGEX = /^[A-Za-z0-9_.-]+$/
 
 function ProfileForm() {
     const { profile, saveProfile } = useProfile()
@@ -98,10 +96,6 @@ function ProfileForm() {
             setMessage("Username can contain only letters, numbers, underscores, hyphens, and periods.")
             return
         }
-        if (!PROFILE_TEXT_REGEX.test(updatedProfile.title)) {
-            setMessage("Status can contain only letters, numbers, underscores, hyphens, and periods.")
-            return
-        }
         if (
             updatedProfile.name.length > MAX_NAME_LENGTH ||
             updatedProfile.firstName.length > MAX_PERSON_NAME_LENGTH ||
@@ -186,19 +180,16 @@ function ProfileForm() {
                     </span>
                 </label>
                 <label className="profile-field">
-                    Current status
+                    Headline
                     <input
                         type="text"
                         value={title}
                         onChange={(event) => setTitle(event.target.value)}
-                        placeholder="Full_Stack_Engineer_at_Company"
+                        placeholder="Full Stack Engineer at Company"
                         maxLength={MAX_STATUS_LENGTH}
-                        pattern={PROFILE_TEXT_PATTERN}
-                        title="Use only letters, numbers, underscores, hyphens, and periods. Spaces are not allowed."
-                        required
                     />
                     <span className="profile-field-hint">
-                        {title.length}/{MAX_STATUS_LENGTH} characters. Use letters, numbers, _, -, and . only.
+                        {title.length}/{MAX_STATUS_LENGTH} characters.
                     </span>
                 </label>
                 <label className="profile-field">

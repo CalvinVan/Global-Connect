@@ -1,8 +1,56 @@
 /* dashboard connections list (sidebar + header come from components/Layout.css) */
+.dashboard {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+}
+
+.dashboard-hero {
+    margin-bottom: 24px;
+}
+
+.dashboard-title-heading {
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.dashboard-subtitle {
+    margin: 6px 0 0;
+    color: var(--text-secondary);
+}
+
+.dashboard-card {
+    border: 1px solid var(--card-border);
+    background: var(--surface);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+.dashboard-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 16px 20px;
+    font-size: 1.125rem;
+    border-bottom: 1px solid var(--hairline-strong);
+}
+
+.dashboard-count {
+    padding: 2px 10px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-size: 0.8125rem;
+}
+
 .dashboard-connections {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.dashboard-row:last-child {
+    border-bottom: none;
 }
 
 .dashboard-row {
