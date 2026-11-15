@@ -12,7 +12,7 @@
     font-size: 1.125rem;
 }
 
-.model-description {
+.modal-description {
     margin: 0;
     font-size: 1.125rem;
     line-height: 1.5;
@@ -35,6 +35,18 @@
     color: var(--text);
     font: inherit;
     font-weight: normal;
+}
+
+.modal-hint {
+    margin: 0;
+    color: var(--text-subtle);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .modal-field input:focus,
